@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #1368c4, #20b9e0);
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* GLASS EFFECT */
+        .cal-container {
+            width: 450px;
+            max-width: 90%;
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        h2 {
+            color: #ffeb3b;
+            text-shadow: 0 3px 8px black;
+        }
+
+        #display {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-size: 22px;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-align: right;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.12);
+            background: rgba(255, 255, 255, 0.6);
+            color: black;
+        }
+
+        @media (max-width: 500px) {
+            .btn-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .copy {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            font-size: 14px;
+            color: white;
+            font-weight: bold;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="cal-container">
+        <h2>Calculator</h2>
+
+        <input type="text" id="display" readonly>
+
+        <div class="btn-grid">
+            <button onclick="press('0')">0</button>
+            <button onclick="press('1')">1</button>
+            <button onclick="press('2')">2</button>
+            <button onclick="press('3')">3</button>
+            <button onclick="press('+')">+</button>
+
+            <button onclick="press('4')">4</button>
+            <button onclick="press('5')">5</button>
+            <button onclick="press('6')">6</button>
+            <button onclick="press('.')">.</button>
+            <button onclick="press('-')">-</button>
+
+            <button onclick="press('7')">7</button>
+            <button onclick="press('8')">8</button>
+            <button onclick="press('9')">9</button>
+            <button onclick="press('*')">*</button>
+            <button onclick="press('/')">/</button>
+
+            <button onclick="calc()">=</button>
+            <button onclick="clearDisplay()">C</button>
+            <p class="copy">@copyright By Suraj 2025</p>
+
+        </div>
+    </div>
+
+    <script>
+        function press(value) {
+            document.getElementById("display").value += value;
+        }
+
+        function calc() {
+            let expression = document.getElementById("display").value;
+
+            try {
+                if (expression.trim() === "") return;
+                document.getElementById("display").value = eval(expression);
+            } catch {
+                document.getElementById("display").value = "Error";
+            }
+        }
+
+        function clearDisplay() {
+            document.getElementById("display").value = "";
+        }
+    </script>
+
+</body>
+
+</html>
