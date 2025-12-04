@@ -50,7 +50,7 @@ Grid-based buttons
 
 Download or clone the project:
 
-git clone https://github.com/your-username/glass-calculator.git
+git clone https://vishwakarmasuraj333.github.io/calculator/
 
 
 Open index.html in any browser.
